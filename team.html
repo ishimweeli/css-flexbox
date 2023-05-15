@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Random Team</title>
+</head>
+<body>
+  <h1>Random Team Generator</h1>
+
+  <h2>Team Members:</h2>
+  <ul id="team-list"></ul>
+
+  <script>
+    // Array of team member names
+    var teamMembers = [
+      "John Doe",
+      "Jane Smith",
+      "Mike Johnson",
+      "Emily Brown",
+      "David Lee",
+      "Sarah Davis"
+    ];
+
+    // Function to generate random team members
+    function generateRandomTeam() {
+      var teamList = document.getElementById("team-list");
+      teamList.innerHTML = ""; // Clear previous list
+
+      // Shuffle the teamMembers array
+      var shuffledMembers = teamMembers.slice();
+      for (var i = shuffledMembers.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = shuffledMembers[i];
+        shuffledMembers[i] = shuffledMembers[j];
+        shuffledMembers[j] = temp;
+      }
+
+      // Add shuffled team members to the list
+      for (var i = 0; i < shuffledMembers.length; i++) {
+        var li = document.createElement("li");
+        li.textContent = shuffledMembers[i];
+        teamList.appendChild(li);
+      }
+    }
+
+    // Call the function to generate the initial team
+    generateRandomTeam();
+  </script>
+</body>
+</html>
